@@ -12,14 +12,12 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import app.junsu.checkin.data.model.Room
 import com.ramcosta.composedestinations.annotation.Destination
 
 @Destination
 @Composable
 fun RoomListScreen(
     modifier: Modifier = Modifier,
-    rooms: List<Room>,
 ) {
     Scaffold(
         modifier = modifier,

@@ -11,11 +11,13 @@ public object NavGraphs {
 
     public val root: NavGraph = NavGraph(
         route = "root",
-        startRoute = HomeScreenDestination,
+        startRoute = HomeDestination,
         destinations = listOf(
-            HomeScreenDestination,
-			LoginScreenDestination,
-			RoomDetailsScreenDestination
+            HomeDestination,
+			ExploreScreenDestination,
+			RoomDetailsScreenDestination,
+			RoomListScreenDestination,
+			LoginScreenDestination
         )
     )
 }
