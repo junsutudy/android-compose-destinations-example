@@ -12,7 +12,7 @@ import androidx.navigation.NavType
 import androidx.navigation.navArgument
 import androidx.navigation.navDeepLink
 import app.junsu.checkin.ui.destinations.RoomDetailsScreenDestination.NavArgs
-import app.junsu.checkin.ui.room.RoomDetailsScreen
+import app.junsu.checkin.ui.home.room.RoomDetailsScreen
 import com.ramcosta.composedestinations.navargs.primitives.DestinationsBooleanNavType
 import com.ramcosta.composedestinations.navargs.primitives.DestinationsIntNavType
 import com.ramcosta.composedestinations.navargs.primitives.DestinationsStringNavType

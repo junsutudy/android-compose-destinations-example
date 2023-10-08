@@ -1,4 +1,4 @@
-package app.junsu.checkin.ui.home
+package app.junsu.checkin.ui.home.room
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -12,29 +12,42 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import app.junsu.checkin.data.model.Room
 import com.ramcosta.composedestinations.annotation.Destination
-import com.ramcosta.composedestinations.annotation.RootNavGraph
-import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
-@RootNavGraph(start = true)
 @Destination
 @Composable
-fun Home(
+fun RoomListScreen(
     modifier: Modifier = Modifier,
-    navigator: DestinationsNavigator,
+    rooms: List<Room>,
 ) {
     Scaffold(
         modifier = modifier,
-        bottomBar = {
-
-        },
+        topBar = {
+            RoomListTopAppBar(
+                modifier = Modifier.fillMaxWidth(),
+                title = "Room List",
+            )
+        }
     ) { padValues ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(padValues)
-                .background(Color.Cyan),
+                .background(Color.Red),
         ) {
         }
     }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun RoomListTopAppBar(
+    modifier: Modifier = Modifier,
+    title: String,
+) {
+    TopAppBar(
+        modifier = modifier,
+        title = { Text(text = title) },
+    )
 }
