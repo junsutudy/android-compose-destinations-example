@@ -70,6 +70,9 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:2.7.4")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
+    implementation("io.github.raamcosta.compose-destinations:animations-core:1.9.54")
+    ksp("io.github.raamcosta.compose-destinations:ksp:1.9.54")
+
     implementation("com.google.dagger:hilt-android:2.48")
     ksp("com.google.dagger:hilt-android-compiler:2.48")
 
