@@ -1,4 +1,4 @@
-package app.junsu.composedestinationexample
+package app.junsu.checkin
 
 import org.junit.Test
 

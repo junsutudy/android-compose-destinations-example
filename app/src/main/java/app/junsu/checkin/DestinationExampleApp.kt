@@ -1,4 +1,4 @@
-package app.junsu.composedestinationexample
+package app.junsu.checkin
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

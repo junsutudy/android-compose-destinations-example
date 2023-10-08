@@ -1,4 +1,4 @@
-package app.junsu.composedestinationexample.ui.theme
+package app.junsu.checkin.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
