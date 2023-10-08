@@ -9,6 +9,7 @@ import app.junsu.checkin.ui.destinations.*
 import com.ramcosta.composedestinations.spec.*
 import com.ramcosta.composedestinations.utils.currentDestinationFlow
 import com.ramcosta.composedestinations.utils.destination
+import com.ramcosta.composedestinations.utils.navGraph
 import com.ramcosta.composedestinations.utils.startDestination
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map

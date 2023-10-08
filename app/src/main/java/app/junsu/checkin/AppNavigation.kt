@@ -6,7 +6,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import app.junsu.checkin.ui.NavGraphs
 import com.google.accompanist.navigation.material.ExperimentalMaterialNavigationApi
+import com.ramcosta.composedestinations.DestinationsNavHost
 import com.ramcosta.composedestinations.animations.defaults.RootNavGraphDefaultAnimations
 import com.ramcosta.composedestinations.animations.rememberAnimatedNavHostEngine
 
@@ -20,14 +22,12 @@ fun AppNavigation(
         navHostContentAlignment = Alignment.TopCenter,
         rootDefaultAnimations = RootNavGraphDefaultAnimations.ACCOMPANIST_FADING,
         defaultAnimationsForNestedNavGraph = mapOf(),
-    )/*
+    )
 
     DestinationsNavHost(
-        engine = navHostEngine,
         modifier = modifier,
-        navGraph = NavGraphs.root(),
-        dependenciesContainerBuilder = {
-            dependency()
-        }
-    )*/
+        engine = navHostEngine,
+        navController = navController,
+        navGraph = NavGraphs.root,
+    )
 }

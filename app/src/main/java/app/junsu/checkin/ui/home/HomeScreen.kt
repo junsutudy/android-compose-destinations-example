@@ -14,5 +14,5 @@ fun HomeScreen(
     modifier: Modifier = Modifier,
     navigator: DestinationsNavigator,
 ) {
-   // navigator.navigate(RoomDetailsScreenDestination)
+    navigator.navigate(RoomDetailsScreenDestination.route)
 }

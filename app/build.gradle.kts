@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "app.junsu.composedestinationexample"
+    namespace = "app.junsu.checkin"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "app.junsu.composedestinationexample"
+        applicationId = "app.junsu.checkin"
         minSdk = 26
         targetSdk = 34
         versionCode = 1
