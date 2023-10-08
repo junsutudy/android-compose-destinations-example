@@ -13,7 +13,8 @@ public object NavGraphs {
         route = "root",
         startRoute = HomeDestination,
         destinations = listOf(
-            HomeDestination,
+            AppInformationScreenDestination,
+			HomeDestination,
 			ExploreScreenDestination,
 			RoomDetailsScreenDestination,
 			RoomListScreenDestination,

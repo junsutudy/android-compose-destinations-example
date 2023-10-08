@@ -7,8 +7,11 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import app.junsu.checkin.data.model.Room
-import app.junsu.checkin.ui.NavGraphs
+import app.junsu.checkin.ui.destinations.AppInformationScreenDestination
+import app.junsu.checkin.ui.destinations.ExploreScreenDestination
 import app.junsu.checkin.ui.destinations.HomeDestination
+import app.junsu.checkin.ui.destinations.RoomDetailsScreenDestination
+import app.junsu.checkin.ui.destinations.RoomListScreenDestination
 import app.junsu.checkin.ui.home.HomeNavigator
 import com.google.accompanist.navigation.material.ExperimentalMaterialNavigationApi
 import com.ramcosta.composedestinations.DestinationsNavHost
@@ -53,6 +56,14 @@ object NavGraphs {
                     it.route
                 }
     }
+    val root = object: NavGraphSpec{
+        override val route: String = "root"
+        override val startRoute: Route = home
+        override val destinationsByRoute: Map<String, DestinationSpec<*>> = emptyMap()
+        override val nestedNavGraphs: List<NavGraphSpec> = listOf(
+            home,
+        )
+    }
 }
 
 class FeatureNavigator(
@@ -64,18 +75,18 @@ class FeatureNavigator(
     }
 
     override fun openExplore() {
-        // navController.navigate(NavGraphs)
+        navController.navigate(ExploreScreenDestination within navGraph)
     }
 
     override fun openRoomList() {
-        TODO("Not yet implemented")
+        navController.navigate(RoomListScreenDestination within navGraph)
     }
 
     override fun openRoomDetails(room: Room) {
-        TODO("Not yet implemented")
+        navController.navigate(RoomDetailsScreenDestination within navGraph)
     }
 
     override fun openAppInformation(version: Int) {
-        TODO("Not yet implemented")
+        navController.navigate(AppInformationScreenDestination within navGraph)
     }
 }
