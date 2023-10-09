@@ -6,6 +6,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
 import androidx.navigation.plusAssign
 import app.junsu.checkin.ui.destinations.Destination
@@ -20,7 +21,7 @@ fun CheckInScaffold(
     modifier: Modifier = Modifier,
     startRoute: Route,
     navController: NavHostController,
-    topBar: @Composable (Destination) -> Unit,
+    topBar: @Composable (Destination, NavBackStackEntry?) -> Unit,
     bottomBar: @Composable (Destination) -> Unit,
     content: @Composable (PaddingValues) -> Unit,
 ) {
@@ -36,7 +37,7 @@ fun CheckInScaffold(
         sheetShape = RoundedCornerShape(16.dp)
     ) {
         Scaffold(
-            topBar = { topBar(destination) },
+            topBar = { topBar(destination, navBackStackEntry) },
             bottomBar = { bottomBar(destination) },
             content = content
         )
