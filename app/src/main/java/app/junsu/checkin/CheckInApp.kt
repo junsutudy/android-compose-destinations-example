@@ -1,38 +1,78 @@
 package app.junsu.checkin
 
+import androidx.annotation.StringRes
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.BottomAppBar
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
-import app.junsu.checkin.data.model.Room
 import app.junsu.checkin.ui.NavGraphs
 import com.google.accompanist.navigation.material.ExperimentalMaterialNavigationApi
 import com.ramcosta.composedestinations.DestinationsNavHost
 import com.ramcosta.composedestinations.animations.rememberAnimatedNavHostEngine
-import com.ramcosta.composedestinations.dynamic.routedIn
-import com.ramcosta.composedestinations.dynamic.within
-import com.ramcosta.composedestinations.navigation.navigate
-import com.ramcosta.composedestinations.spec.DestinationSpec
-import com.ramcosta.composedestinations.spec.NavGraphSpec
-import com.ramcosta.composedestinations.spec.Route
+import com.ramcosta.composedestinations.spec.NavHostEngine
 
 @OptIn(ExperimentalMaterialNavigationApi::class, ExperimentalAnimationApi::class)
 @Composable
-fun AppNavigation(
+fun CheckInApp(
     modifier: Modifier = Modifier,
-    navController: NavHostController = rememberNavController(),
+    navHostEngine: NavHostEngine = rememberAnimatedNavHostEngine(),
+    navController: NavHostController = navHostEngine.rememberNavController(),
 ) {
-    val navHostEngine = rememberAnimatedNavHostEngine()
+    val shouldShowBottomAppBar by remember { mutableStateOf(true) }
 
-    DestinationsNavHost(
+    Scaffold(
         modifier = modifier,
-        engine = navHostEngine,
-        navController = navController,
-        navGraph = NavGraphs.root,
-        startRoute = NavGraphs.root.startRoute,
-    )
+        topBar = {},
+        bottomBar = {
+            if (shouldShowBottomAppBar) {
+                CheckInBottomAppBar(
+                    modifier = Modifier.fillMaxWidth(),
+                    navController = navController,
+                )
+            }
+        },
+    ) { padValues ->
+        DestinationsNavHost(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(padValues),
+            engine = navHostEngine,
+            navController = navController,
+            navGraph = NavGraphs.root,
+            startRoute = NavGraphs.root.startRoute,
+        )
+    }
 }
+
+@Composable
+fun CheckInBottomAppBar(
+    modifier: Modifier = Modifier,
+    navController: NavHostController,
+) {
+    BottomAppBar(
+        modifier = modifier,
+    ) {
+
+    }
+}
+
+enum class HomeSections(
+    // val direction: ,
+    val icon: ImageVector,
+    @StringRes val label: Int,
+) {
+    // EXPLORE(ExploreScreenDestination, )
+}
+
 /*
 object NavGraphs {
 
@@ -57,8 +97,7 @@ object NavGraphs {
             home,
         )
     }
-}*/
-/*
+}*//*
 
 class FeatureNavigator(
     private val navGraph: NavGraphSpec,
