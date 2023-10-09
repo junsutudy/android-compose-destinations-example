@@ -9,6 +9,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import app.junsu.checkin.data.model.Room
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.annotation.RootNavGraph
 
 interface HomeNavigator {
     fun openHome()
@@ -18,10 +20,12 @@ interface HomeNavigator {
     fun openAppInformation(version: Int)
 }
 
+@RootNavGraph(start = true)
+@Destination
 @Composable
-fun Home(
+fun HomeScreen(
     modifier: Modifier = Modifier,
-    navigator: HomeNavigator,
+    // navigator: HomeNavigator,
 ) {
     Scaffold(
         modifier = modifier,
@@ -33,7 +37,7 @@ fun Home(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(padValues)
-                .background(Color.Cyan),
+                .background(Color.Blue),
         ) {}
     }
 }
