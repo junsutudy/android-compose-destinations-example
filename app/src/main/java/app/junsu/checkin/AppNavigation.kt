@@ -6,12 +6,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import app.junsu.checkin.data.model.Room
-import app.junsu.checkin.ui.destinations.AppInformationScreenDestination
-import app.junsu.checkin.ui.destinations.ExploreScreenDestination
-import app.junsu.checkin.ui.destinations.HomeDestination
-import app.junsu.checkin.ui.destinations.RoomDetailsScreenDestination
-import app.junsu.checkin.ui.destinations.RoomListScreenDestination
-import app.junsu.checkin.ui.home.HomeNavigator
+import app.junsu.checkin.ui.NavGraphs
 import com.google.accompanist.navigation.material.ExperimentalMaterialNavigationApi
 import com.ramcosta.composedestinations.DestinationsNavHost
 import com.ramcosta.composedestinations.animations.rememberAnimatedNavHostEngine
@@ -35,9 +30,10 @@ fun AppNavigation(
         engine = navHostEngine,
         navController = navController,
         navGraph = NavGraphs.root,
+        startRoute = NavGraphs.root.startRoute,
     )
 }
-
+/*
 object NavGraphs {
 
     val home = object : NavGraphSpec {
@@ -61,7 +57,8 @@ object NavGraphs {
             home,
         )
     }
-}
+}*/
+/*
 
 class FeatureNavigator(
     private val navGraph: NavGraphSpec,
@@ -87,3 +84,4 @@ class FeatureNavigator(
         navController.navigate(AppInformationScreenDestination within navGraph)
     }
 }
+*/

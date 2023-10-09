@@ -11,10 +11,9 @@ public object NavGraphs {
 
     public val root: NavGraph = NavGraph(
         route = "root",
-        startRoute = HomeDestination,
+        startRoute = ExploreScreenDestination,
         destinations = listOf(
             AppInformationScreenDestination,
-			HomeDestination,
 			ExploreScreenDestination,
 			RoomDetailsScreenDestination,
 			RoomListScreenDestination,

@@ -15,9 +15,7 @@ import androidx.compose.ui.graphics.Color
 import app.junsu.checkin.ui.home.HomeNavGraph
 import com.ramcosta.composedestinations.annotation.Destination
 
-@Destination(
-    navGraph = HomeNavGraph.route,
-)
+@Destination
 @Composable
 fun RoomListScreen(
     modifier: Modifier = Modifier,
