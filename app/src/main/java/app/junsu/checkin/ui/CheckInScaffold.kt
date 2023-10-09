@@ -20,8 +20,8 @@ fun CheckInScaffold(
     modifier: Modifier = Modifier,
     startRoute: Route,
     navController: NavHostController,
-    topAppBar: @Composable (Destination) -> Unit,
-    bottomAppBar: @Composable (Destination) -> Unit,
+    topBar: @Composable (Destination) -> Unit,
+    bottomBar: @Composable (Destination) -> Unit,
     content: @Composable (PaddingValues) -> Unit,
 ) {
     val destination = navController.appCurrentDestinationAsState().value
@@ -31,12 +31,13 @@ fun CheckInScaffold(
     val bottomSheetNavigator = rememberBottomSheetNavigator()
     navController.navigatorProvider += bottomSheetNavigator
     ModalBottomSheetLayout(
+        modifier = modifier,
         bottomSheetNavigator = bottomSheetNavigator,
         sheetShape = RoundedCornerShape(16.dp)
     ) {
         Scaffold(
-            topBar = { topAppBar(destination) },
-            bottomBar = { bottomAppBar(destination) },
+            topBar = { topBar(destination) },
+            bottomBar = { bottomBar(destination) },
             content = content
         )
     }

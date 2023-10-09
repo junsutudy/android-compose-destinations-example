@@ -7,11 +7,10 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.outlined.LocationOn
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material3.BottomAppBar
-import androidx.compose.material3.BottomAppBarDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBarItem
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
@@ -45,6 +44,8 @@ fun CheckInBottomAppBar(
             NavigationBarItem(
                 selected = selected,
                 onClick = {
+                    println("SELECTEDSELECTED ${direction.route} $selected" +
+                            "\n${navController.graph}")
                     if (selected) {
                         navController.popBackStack(
                             route = direction,
@@ -71,9 +72,6 @@ fun CheckInBottomAppBar(
                         },
                         contentDescription = stringResource(id = label),
                     )
-                },
-                label = {
-                    Text(text = stringResource(id = label))
                 },
             )
         }

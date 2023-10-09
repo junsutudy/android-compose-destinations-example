@@ -4,13 +4,13 @@ import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
+import app.junsu.checkin.ui.CheckInScaffold
 import app.junsu.checkin.ui.NavGraphs
 import app.junsu.checkin.ui.home.CheckInBottomAppBar
 import com.google.accompanist.navigation.material.ExperimentalMaterialNavigationApi
@@ -27,8 +27,10 @@ fun CheckInApp(
 ) {
     val shouldShowBottomAppBar by remember { mutableStateOf(true) }
 
-    Scaffold(
+    CheckInScaffold(
         modifier = modifier,
+        startRoute = NavGraphs.root.startRoute,
+        navController = navController,
         topBar = {},
         bottomBar = {
             if (shouldShowBottomAppBar) {
