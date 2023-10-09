@@ -7,14 +7,24 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.outlined.LocationOn
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material3.BottomAppBar
+import androidx.compose.material3.BottomAppBarDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import app.junsu.checkin.R
+import app.junsu.checkin.ui.NavGraphs
 import app.junsu.checkin.ui.destinations.DirectionDestination
 import app.junsu.checkin.ui.destinations.ExploreScreenDestination
 import app.junsu.checkin.ui.destinations.RoomListScreenDestination
+import com.ramcosta.composedestinations.navigation.navigate
+import com.ramcosta.composedestinations.navigation.popBackStack
+import com.ramcosta.composedestinations.navigation.popUpTo
+import com.ramcosta.composedestinations.utils.isRouteOnBackStack
 
 class BottomAppBarIcons(
     val selectedIcon: ImageVector,
@@ -29,7 +39,44 @@ fun CheckInBottomAppBar(
     BottomAppBar(
         modifier = modifier,
     ) {
+        CheckInSections.entries.forEach { (direction, icon, label) ->
+            val selected = navController.isRouteOnBackStack(direction)
 
+            NavigationBarItem(
+                selected = selected,
+                onClick = {
+                    if (selected) {
+                        navController.popBackStack(
+                            route = direction,
+                            inclusive = false,
+                        )
+                        return@NavigationBarItem
+                    }
+
+                    navController.navigate(direction) {
+                        popUpTo(NavGraphs.root) {
+                            saveState = true
+                        }
+
+                        launchSingleTop = true
+                        restoreState = true
+                    }
+                },
+                icon = {
+                    Icon(
+                        imageVector = if (selected) {
+                            icon.selectedIcon
+                        } else {
+                            icon.unselectedIcon
+                        },
+                        contentDescription = stringResource(id = label),
+                    )
+                },
+                label = {
+                    Text(text = stringResource(id = label))
+                },
+            )
+        }
     }
 }
 
@@ -55,4 +102,8 @@ enum class CheckInSections(
         label = R.string.bottom_app_bar_section_room_list,
     ),
     ;
+
+    operator fun component1() = direction
+    operator fun component2() = icon
+    operator fun component3() = label
 }

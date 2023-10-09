@@ -1,20 +1,18 @@
 package app.junsu.checkin
 
-import androidx.annotation.StringRes
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation.NavHostController
 import app.junsu.checkin.ui.NavGraphs
+import app.junsu.checkin.ui.home.CheckInBottomAppBar
 import com.google.accompanist.navigation.material.ExperimentalMaterialNavigationApi
 import com.ramcosta.composedestinations.DestinationsNavHost
 import com.ramcosta.composedestinations.animations.rememberAnimatedNavHostEngine
@@ -51,26 +49,6 @@ fun CheckInApp(
             startRoute = NavGraphs.root.startRoute,
         )
     }
-}
-
-@Composable
-fun CheckInBottomAppBar(
-    modifier: Modifier = Modifier,
-    navController: NavHostController,
-) {
-    BottomAppBar(
-        modifier = modifier,
-    ) {
-
-    }
-}
-
-enum class HomeSections(
-    // val direction: ,
-    val icon: ImageVector,
-    @StringRes val label: Int,
-) {
-    // EXPLORE(ExploreScreenDestination, )
 }
 
 /*
