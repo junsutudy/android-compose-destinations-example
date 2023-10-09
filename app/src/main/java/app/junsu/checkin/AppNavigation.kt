@@ -2,7 +2,6 @@ package app.junsu.checkin
 
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
@@ -15,7 +14,6 @@ import app.junsu.checkin.ui.destinations.RoomListScreenDestination
 import app.junsu.checkin.ui.home.HomeNavigator
 import com.google.accompanist.navigation.material.ExperimentalMaterialNavigationApi
 import com.ramcosta.composedestinations.DestinationsNavHost
-import com.ramcosta.composedestinations.animations.defaults.RootNavGraphDefaultAnimations
 import com.ramcosta.composedestinations.animations.rememberAnimatedNavHostEngine
 import com.ramcosta.composedestinations.dynamic.routedIn
 import com.ramcosta.composedestinations.dynamic.within
@@ -30,11 +28,7 @@ fun AppNavigation(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
 ) {
-    val navHostEngine = rememberAnimatedNavHostEngine(
-        navHostContentAlignment = Alignment.TopCenter,
-        rootDefaultAnimations = RootNavGraphDefaultAnimations.ACCOMPANIST_FADING,
-        defaultAnimationsForNestedNavGraph = mapOf(),
-    )
+    val navHostEngine = rememberAnimatedNavHostEngine()
 
     DestinationsNavHost(
         modifier = modifier,
@@ -50,13 +44,16 @@ object NavGraphs {
         override val startRoute: Route = HomeDestination routedIn this
         override val route: String = "home"
         override val destinationsByRoute: Map<String, DestinationSpec<*>> =
-            listOf<DestinationSpec<*>>()
+            listOf<DestinationSpec<*>>(
+                HomeDestination,
+                ExploreScreenDestination,
+                RoomListScreenDestination,
+            )
                 .routedIn(this)
-                .associateBy {
-                    it.route
-                }
+                .associateBy { it.route }
     }
-    val root = object: NavGraphSpec{
+
+    val root = object : NavGraphSpec {
         override val route: String = "root"
         override val startRoute: Route = home
         override val destinationsByRoute: Map<String, DestinationSpec<*>> = emptyMap()

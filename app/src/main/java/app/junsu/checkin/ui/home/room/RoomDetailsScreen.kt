@@ -5,7 +5,9 @@ import androidx.compose.ui.Modifier
 import app.junsu.checkin.data.model.Room
 import com.ramcosta.composedestinations.annotation.Destination
 
-@Destination
+@Destination(
+    navGraph = "home",
+)
 @Composable
 fun RoomDetailsScreen(
     modifier: Modifier = Modifier,
