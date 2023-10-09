@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Compose Destination Example</string>
+    <string name="bottom_app_bar_section_explore">Explore</string>
+    <string name="bottom_app_bar_section_room_list">Rooms</string>
 </resources>
