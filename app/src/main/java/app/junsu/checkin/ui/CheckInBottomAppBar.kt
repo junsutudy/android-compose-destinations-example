@@ -1,4 +1,4 @@
-package app.junsu.checkin.ui.home
+package app.junsu.checkin.ui
 
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
@@ -10,13 +10,11 @@ import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import app.junsu.checkin.R
-import app.junsu.checkin.ui.NavGraphs
 import app.junsu.checkin.ui.destinations.DirectionDestination
 import app.junsu.checkin.ui.destinations.ExploreScreenDestination
 import app.junsu.checkin.ui.destinations.RoomListScreenDestination

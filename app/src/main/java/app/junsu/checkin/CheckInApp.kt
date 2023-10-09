@@ -10,9 +10,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
+import app.junsu.checkin.ui.CheckInBottomAppBar
 import app.junsu.checkin.ui.CheckInScaffold
+import app.junsu.checkin.ui.CheckInTopAppBar
 import app.junsu.checkin.ui.NavGraphs
-import app.junsu.checkin.ui.home.CheckInBottomAppBar
 import com.google.accompanist.navigation.material.ExperimentalMaterialNavigationApi
 import com.ramcosta.composedestinations.DestinationsNavHost
 import com.ramcosta.composedestinations.animations.rememberAnimatedNavHostEngine
@@ -25,13 +26,22 @@ fun CheckInApp(
     navHostEngine: NavHostEngine = rememberAnimatedNavHostEngine(),
     navController: NavHostController = navHostEngine.rememberNavController(),
 ) {
+    val shouldShowTopAppBar by remember { mutableStateOf(true) }
     val shouldShowBottomAppBar by remember { mutableStateOf(true) }
 
     CheckInScaffold(
         modifier = modifier,
         startRoute = NavGraphs.root.startRoute,
         navController = navController,
-        topBar = {},
+        topBar = { dest, backStackEntry ->
+            if (shouldShowTopAppBar) {
+                CheckInTopAppBar(
+                    modifier = Modifier.fillMaxWidth(),
+                    destination = dest,
+                    navBackStackEntry = backStackEntry,
+                )
+            }
+        },
         bottomBar = {
             if (shouldShowBottomAppBar) {
                 CheckInBottomAppBar(
